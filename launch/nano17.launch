@@ -1,0 +1,7 @@
+<launch>
+  <remap from="/netft_data" to="/netft_right"/>
+  <node name="nano_right" pkg="netft_utils" type="netft_node" respawn="false" output="screen" args="192.168.1.1"/>
+  <remap from="/netft_data" to="/netft_left"/>
+  <node name="nano_left" pkg="netft_utils" type="netft_node" respawn="false" output="screen" args="192.168.1.2" />
+</launch>
+

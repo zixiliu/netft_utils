@@ -1,0 +1,25 @@
+Starting logging on 2021-02-03 at 20:04:52
+Launching discovery service for config 172.17.1.7:3509
+devFusionTrack.cpp, line 205: reading SN LSBs
+Sending packet 2 at 1612382692110
+Sent packet 2 at 1612382692110
+Received packet answering to 1 at 1612382692114
+devFusionTrack.cpp, line 235: reading SN MSBs
+Sending packet 3 at 1612382692115
+Sent packet 3 at 1612382692115
+Received packet answering to 2 at 1612382692117
+- Device 0xF4000007073BCC28 found (ip=172.17.1.7, port=3509)
+- Configure Device
+devDeviceInfoExt.cpp, line 1155: connecting the socket
+devDeviceInfoExt.cpp, line 1174: reading registers description address
+devDeviceInfoExt.cpp, line 1182: downloading the register description
+devDeviceInfoExt.cpp, line 1196: testing UPD packet size
+  ? Testing UDP packet size of 8132
+/var/jenkins/workspace/ftk_soft.atr.meta.2cams.sdk.release.public.linux.installer/soft.atr.2cams.ftk/dev/include/devPacketReader.tpp, line 91, waiting for response
+/var/jenkins/workspace/ftk_soft.atr.meta.2cams.sdk.release.public.linux.installer/soft.atr.2cams.ftk/dev/include/devPacketReader.tpp, line 91, waiting for response
+/var/jenkins/workspace/ftk_soft.atr.meta.2cams.sdk.release.public.linux.installer/soft.atr.2cams.ftk/dev/include/devPacketReader.tpp, line 91, waiting for response
+/var/jenkins/workspace/ftk_soft.atr.meta.2cams.sdk.release.public.linux.installer/soft.atr.2cams.ftk/dev/include/devPacketReader.tpp, line 91, waiting for response
+/var/jenkins/workspace/ftk_soft.atr.meta.2cams.sdk.release.public.linux.installer/soft.atr.2cams.ftk/dev/include/devPacketReader.tpp, line 91, waiting for response
+  ? Testing UDP packet size of 7108
+/var/jenkins/workspace/ftk_soft.atr.meta.2cams.sdk.release.public.linux.installer/soft.atr.2cams.ftk/dev/include/devPacketReader.tpp, line 91, waiting for response
+Trying to enable data sending back
