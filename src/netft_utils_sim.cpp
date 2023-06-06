@@ -16,8 +16,8 @@ Author: Alex von Sternberg
 
 #include "ros/ros.h"
 #include "geometry_msgs/WrenchStamped.h"
-#include "netft_utils/StartSim.h"
-#include "netft_utils/StopSim.h"
+#include "hand_grasp/StartSim.h"
+#include "hand_grasp/StopSim.h"
 #include <math.h>
 
 /**
@@ -143,7 +143,7 @@ void simData()
   }
 }                 
                   
-bool startSim(netft_utils::StartSim::Request &req, netft_utils::StartSim::Response &res)
+bool startSim(hand_grasp::StartSim::Request &req, hand_grasp::StartSim::Response &res)
 {  
   simStart = ros::Time::now().toSec();
   simDim = (Dim)req.simDim;
@@ -154,7 +154,7 @@ bool startSim(netft_utils::StartSim::Request &req, netft_utils::StartSim::Respon
   return true;
 }  
 
-bool stopSim(netft_utils::StopSim::Request &req, netft_utils::StopSim::Response &res)
+bool stopSim(hand_grasp::StopSim::Request &req, hand_grasp::StopSim::Response &res)
 { 
   toSim = false;                
   return true;    

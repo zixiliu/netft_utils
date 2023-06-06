@@ -122,7 +122,7 @@ void NetftUtils::initialize()
   netft_raw_world_data_pub = n.advertise<geometry_msgs::WrenchStamped>("raw_world", 100000);
   netft_world_data_pub = n.advertise<geometry_msgs::WrenchStamped>("transformed_world", 100000);
   netft_tool_data_pub = n.advertise<geometry_msgs::WrenchStamped>("transformed_tool", 100000);
-  netft_cancel_pub = n.advertise<netft_utils::Cancel>("cancel", 100000);
+  netft_cancel_pub = n.advertise<hand_grasp::Cancel>("cancel", 100000);
 
   //Advertise bias and threshold services
   bias_service = n.advertiseService("bias", &NetftUtils::fixedOrientationBias, this);
@@ -319,7 +319,7 @@ void NetftUtils::netftCallback(const geometry_msgs::WrenchStamped::ConstPtr& dat
 // Useful when the sensor's orientation won't change.
 // Run this method when the sensor is stationary to avoid inertial effects.
 // Cannot bias the sensor if gravity compensation has already been applied.
-bool NetftUtils::fixedOrientationBias(netft_utils::SetBias::Request &req, netft_utils::SetBias::Response &res)
+bool NetftUtils::fixedOrientationBias(hand_grasp::SetBias::Request &req, hand_grasp::SetBias::Response &res)
 {                 
   if(req.toBias)  
   {           
@@ -346,7 +346,7 @@ bool NetftUtils::fixedOrientationBias(netft_utils::SetBias::Request &req, netft_
 // It's assumed that the payload's center of mass is located on the sensor's central access.
 // Run this method when the sensor is stationary to avoid inertial effects.
 // Cannot do gravity compensation if sensor has already been biased.
-bool NetftUtils::compensateForGravity(netft_utils::SetBias::Request &req, netft_utils::SetBias::Response &res)
+bool NetftUtils::compensateForGravity(hand_grasp::SetBias::Request &req, hand_grasp::SetBias::Response &res)
 {
 
   if(req.toBias)
@@ -376,7 +376,7 @@ bool NetftUtils::compensateForGravity(netft_utils::SetBias::Request &req, netft_
   return true;
 }  
 
-bool NetftUtils::setFilter(netft_utils::SetFilter::Request &req, netft_utils::SetFilter::Response &res)
+bool NetftUtils::setFilter(hand_grasp::SetFilter::Request &req, hand_grasp::SetFilter::Response &res)
 {                 
   if(req.toFilter)  
   {
@@ -393,7 +393,7 @@ bool NetftUtils::setFilter(netft_utils::SetFilter::Request &req, netft_utils::Se
   return true;    
 }  
 
-bool NetftUtils::setMax(netft_utils::SetMax::Request &req, netft_utils::SetMax::Response &res)
+bool NetftUtils::setMax(hand_grasp::SetMax::Request &req, hand_grasp::SetMax::Response &res)
 {                 
   if(req.forceMax >= 0.0001)
     forceMaxU = req.forceMax;
@@ -404,7 +404,7 @@ bool NetftUtils::setMax(netft_utils::SetMax::Request &req, netft_utils::SetMax::
   return true;    
 }
 
-bool NetftUtils::setWeightBias(netft_utils::SetBias::Request &req, netft_utils::SetBias::Response &res)
+bool NetftUtils::setWeightBias(hand_grasp::SetBias::Request &req, hand_grasp::SetBias::Response &res)
 {                 
   if(req.toBias)  
   {               
@@ -419,7 +419,7 @@ bool NetftUtils::setWeightBias(netft_utils::SetBias::Request &req, netft_utils::
   return true;    
 }  
     
-bool NetftUtils::getWeight(netft_utils::GetDouble::Request &req, netft_utils::GetDouble::Response &res)
+bool NetftUtils::getWeight(hand_grasp::GetDouble::Request &req, hand_grasp::GetDouble::Response &res)
 {                 
   geometry_msgs::WrenchStamped carried_weight;
   copyWrench(raw_data_tool, carried_weight, weight_bias);
@@ -428,7 +428,7 @@ bool NetftUtils::getWeight(netft_utils::GetDouble::Request &req, netft_utils::Ge
   return true;    
 }      
             
-bool NetftUtils::setThreshold(netft_utils::SetThreshold::Request &req, netft_utils::SetThreshold::Response &res)
+bool NetftUtils::setThreshold(hand_grasp::SetThreshold::Request &req, hand_grasp::SetThreshold::Response &res)
 {                 
   threshold.wrench.force.x = req.data.wrench.force.x;
   threshold.wrench.force.y = req.data.wrench.force.y;

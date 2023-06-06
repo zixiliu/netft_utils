@@ -107,7 +107,7 @@ bool NetftUtilsLean::initialize(double rate, std::string world, std::string ft, 
   listener = new tf::TransformListener(ros::Duration(300));
 
   //Publish on the /cancel topic. Queue up to 100000 data points
-  netft_cancel_pub = n->advertise<netft_utils::Cancel>("/netft/cancel", 100000);
+  netft_cancel_pub = n->advertise<hand_grasp::Cancel>("/netft/cancel", 100000);
 
   if(DEBUG_DATA)
     data_pub = n->advertise<geometry_msgs::WrenchStamped>("/netft/netft_data", 100000);
